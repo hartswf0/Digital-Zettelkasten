@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Copyright Law & Technology Timeline</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: "Courier New", monospace;
+            margin: 0;
+            padding: 20px;
+            background: #f0ede6;
+            color: #2c1810;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c1810;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1em;
+            color: #8b7355;
+        }
+
+        /* Legend Styles */
+        .legend {
+            background: #fff9f0;
+            border: 1px solid #d3c5b6;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .legend h3 {
+            margin-top: 0;
+            color: #8b7355;
+            font-size: 1.2em;
+        }
+
+        .legend p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+            padding-left: 20px;
+            border-left: 4px solid #8b7355;
+        }
+
+        .era {
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .era.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .era-header {
+            background: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            text-align: center;
+        }
+
+        .event {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .event::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background-color: #8b7355;
+            border-radius: 50%;
+        }
+
+        .event-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 0 5px;
+        }
+
+        .event-date {
+            font-size: 0.9em;
+            color: #8b7355;
+            margin-bottom: 10px;
+        }
+
+        .event-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 0 auto 10px;
+            display: block;
+            background-color: black;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .event-description {
+            font-size: 0.95em;
+            color: #5c4033;
+            margin-bottom: 5px;
+        }
+
+        .event-entities {
+            font-size: 0.85em;
+            color: #8b7355;
+        }
+
+        /* Watermark */
+        .blueprint-watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 100px;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: -1;
+            white-space: nowrap;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 5px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header p, .legend h3, .legend p {
+                font-size: 0.9em;
+            }
+
+            .era-header {
+                font-size: 1.1em;
+            }
+
+            .event-title {
+                font-size: 1em;
+            }
+
+            .event-date, .event-description, .event-entities {
+                font-size: 0.85em;
+            }
+
+            .blueprint-watermark {
+                font-size: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Watermark -->
+    <div class="blueprint-watermark">COPYRIGHT TIMELINE</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Copyright Law & Technology Timeline</h1>
+            <p>A chronological analysis of legal precedents and technological disruptions</p>
+        </div>
+
+        <div class="container">
+            <!-- New Button Container -->
+            <div class="button-container">
+                <a href="index.html" class="top-button">Go to Zettelkasten</a>
+            </div>
+            <!-- End of Button Container -->
+
+
+        <!-- Legend Section -->
+        <div class="legend">
+            <h3>Timeline Legend</h3>
+            <p>🏛️ Legal Precedent | 💡 Technological Innovation | ⚖️ Court Case | 🔄 Industry Change</p>
+        </div>
+
+        <!-- Timeline Container -->
+        <div class="timeline-container">
+            <!-- Era Sections will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- JavaScript for Interactivity and Data Handling -->
+    <script>
+        const data = [
+            {
+                "era": "18th to 19th Century: Foundations",
+                "events": [
+                    {
+                        "date": "1790 🏛️",
+                        "title": "First U.S. Copyright Act",
+                        "description": "The first federal copyright law in the United States, granting authors exclusive rights to their publications.",
+                        "entities": "Entity: U.S. Government → Foundational Copyright Laws",
+                        "imageUrl": "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/203adb05-9230-5ead-badc-570cf1c05230/01a84265-e09c-5682-92ce-681c89a1afe2.jpg"
+                    },
+                    {
+                        "date": "1839 💡",
+                        "title": "Introduction of Photography",
+                        "description": "Photography emerges as a new medium, prompting debates on authorship and copyright in visual arts.",
+                        "entities": "Entity: Inventors (Louis Daguerre) → Photography as Artistic Tool",
+                        "imageUrl": "https://www.clippingpathcampus.com/wp-content/uploads/2022/04/Daguerreotype.jpg"
+                    },
+                    {
+                        "date": "1884 ⚖️",
+                        "title": "Burrow-Giles Lithographic Co. v. Sarony",
+                        "description": "The U.S. Supreme Court ruled that photographs are copyrightable as they embody the photographer’s original intellectual conception.",
+                        "entities": "Entity: Napoleon Sarony vs. Burrow-Giles Lithographic Company → Copyright Protection for Photographs",
+                        "imageUrl": "https://www.oscarwildeinamerica.org/images/r/15n-3-1726.jpg"
+                    }
+                ]
+            },
+            {
+                "era": "20th Century: Digital Dawn",
+                "events": [
+                    {
+                        "date": "1950s-1960s 💡",
+                        "title": "Xerox Machines",
+                        "description": "Revolution in document duplication leads to early copyright infringement concerns.",
+                        "entities": "Entity: Xerox Corporation → Document Duplication Technology",
+                        "imageUrl": "data:image/jpeg;base64,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"
+                    },
+                    {
+                        "date": "1984 ⚖️",
+                        "title": "Sony Corp. v. Universal City Studios",
+                        "description": "The Supreme Court ruled that home videotaping for personal use is fair use, establishing the 'substantial non-infringing use' doctrine.",
+                        "entities": "Entity: Sony Corp. vs. Universal Studios → Betamax Case",
+                        "imageUrl": "https://64.media.tumblr.com/fb0329504f60c8d13986a234025e67ca/tumblr_inline_nxoml0u4wC1r3vuqk_540.jpg"
+                    },
+                    {
+                        "date": "1998 🏛️",
+                        "title": "Digital Millennium Copyright Act (DMCA)",
+                        "description": "U.S. law addressing digital copyright issues, including anti-circumvention measures and safe harbor provisions for online service providers.",
+                        "entities": "Entity: U.S. Government → Digital Copyright Legislation",
+                        "imageUrl": "https://www.copyright.gov/512/images/512-graphic-1.jpg"
+                    },
+                    {
+                        "date": "1998 ⚖️",
+                        "title": "Boosey & Hawkes v. Walt Disney Co.",
+                        "description": "Addressed whether legacy licenses cover new formats like video, highlighting challenges of adapting agreements to technological advances.",
+                        "entities": "Entity: Boosey & Hawkes vs. Walt Disney → Legacy Licensing Issues",
+                        "imageUrl": "https://images.45worlds.com/f/ab/leopold-stokowski-and-the-philadelphia-orchestra-rite-of-spring-toccata-and-fugue-from-walt-disneys-ab.jpg"
+                    },
+                    {
+                        "date": "1999 🔄",
+                        "title": "Napster and Digital Music Revolution",
+                        "description": "Disruption of the music industry through peer-to-peer file sharing.",
+                        "entities": "Entity: Napster → Mass Industrial-Scale Music Copying",
+                        "imageUrl": "https://stephenslighthouse.com/wp-content/uploads/2011/04/albumsales.jpg"
+                    },
+                    {
+                        "date": "2001 ⚖️",
+                        "title": "A&M Records, Inc. v. Napster, Inc.",
+                        "description": "Court ruled Napster liable for contributory and vicarious infringement, impacting future P2P networks.",
+                        "entities": "Entity: A&M Records vs. Napster → P2P File Sharing Legalities",
+                        "imageUrl": "https://embed-ssl.wistia.com/deliveries/5dd58eb64994fd5d2a6386ae970a5f200cd8ca66.jpg?image_crop_resized=750x422"
+                    }
+                ]
+            },
+            {
+                "era": "Early 21st Century: Digital Disruption",
+                "events": [
+                    {
+                        "date": "2005 ⚖️",
+                        "title": "MGM Studios, Inc. v. Grokster, Ltd.",
+                        "description": "Supreme Court held that companies inducing infringement can be liable, affecting technology developers.",
+                        "entities": "Entity: MGM Studios vs. Grokster → Inducement of Infringement",
+                        "imageUrl": "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/acad2855-c566-50f9-8fe9-cc3660c2e728/64820455-0684-5cf0-a2c0-9e95f65e1a52.jpg"
+                    },
+                    {
+                        "date": "2015 ⚖️",
+                        "title": "Authors Guild v. Google, Inc.",
+                        "description": "Landmark case setting precedents for fair use and transformative technologies with Google's book scanning project.",
+                        "entities": "Entity: Authors Guild vs. Google → Fair Use in Digital Libraries",
+                        "imageUrl": "https://diybookscanner.org/archivist/wp-content/uploads/2015/03/DIY_Book_Scanner_Kit_Beta_Mark_1.jpg"
+                    },
+                    {
+                        "date": "2018 ⚖️",
+                        "title": "Naruto v. Slater",
+                        "description": "Federal courts ruled that non-human animals cannot hold copyrights, reinforcing human-centric authorship.",
+                        "entities": "Entity: Naruto (monkey) vs. David Slater → Nonhuman Authorship Rights",
+                        "imageUrl": "https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/85d112b0-d996-5b51-80af-2ff9bd8c8a2b/01a84265-e09c-5682-92ce-681c89a1afe2.jpg"
+                    },
+                    {
+                        "date": "2019 🏛️",
+                        "title": "EU Directive on Copyright in the Digital Single Market",
+                        "description": "European legislation aiming to modernize copyright laws for the digital age, including content filtering obligations for platforms.",
+                        "entities": "Entity: European Union → Digital Single Market Directive",
+                        "imageUrl": "https://scipublaw.com/wp-content/uploads/2019/10/eu-digital-single.jpg"
+                    }
+                ]
+            },
+            {
+                "era": "2020s: AI Era",
+                "events": [
+                    {
+                        "date": "2020 💡",
+                        "title": "Release of GPT-3 by OpenAI",
+                        "description": "Introduction of a powerful language model capable of generating human-like text, raising new legal and ethical questions.",
+                        "entities": "Entity: OpenAI → Advancements in Language Models",
+                        "imageUrl": "https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F26fd2d00-2b35-460f-83c1-4699cc5f23f6_1854x1030.png"
+                    },
+                    {
+                        "date": "2021 ⚖️",
+                        "title": "Oracle America, Inc. v. Google LLC",
+                        "description": "Supreme Court ruled that Google's use of Java API is fair use, significant for software development and API usage.",
+                        "entities": "Entity: Oracle vs. Google → API Copyright and Fair Use",
+                        "imageUrl": "https://images.theconversation.com/files/83441/original/image-20150530-15207-qaygn7.png?ixlib=rb-4.1.0&q=45&auto=format&w=1000&fit=clip"
+                    },
+                    {
+                        "date": "2022 ⚖️",
+                        "title": "OpenAI and Meta Accusations",
+                        "description": "Sarah Silverman's lawsuit regarding AI training on copyrighted material.",
+                        "entities": "Entity: Sarah Silverman vs. OpenAI/Meta → AI Training Rights",
+                        "imageUrl": "https://pyxis.nymag.com/v1/imgs/5ba/dc5/38aa6e31a46e93fa0e04cb84b1146d5471-GettyImages-131846637.rhorizontal.w700.jpg"
+                    },
+                    {
+                        "date": "2023 🔄",
+                        "title": "Major Media vs. AI Companies",
+                        "description": "The Times sues AI companies while Getty Images pledges photographer compensation.",
+                        "entities": "Entity: Times/Getty vs. AI Industry → Content Rights",
+                        "imageUrl": "https://media.licdn.com/dms/image/D4D12AQErnC6WV-P8Cg/article-cover_image-shrink_720_1280/0/1680713441767?e=2147483647&v=beta&t=e5TNynnuvYoCQziWwsSsbakGEB5SEunj3wIaR8Ec4EM"
+                    },
+                    {
+                        "date": "2023 ⚖️",
+                        "title": "Dr. Stephen Thaler vs. USPTO",
+                        "description": "Court ruled that an AI entity, DABUS, cannot be recognized as an inventor, maintaining that inventorship is exclusively human.",
+                        "entities": "Entity: Stephen Thaler vs. USPTO → AI Inventorship Rights",
+                        "imageUrl": "https://www.artnews.com/wp-content/uploads/2024/01/web-paradise_light_16000x12000.jpg?w=1200"
+                    },
+                    {
+                        "date": "2023 ⚖️",
+                        "title": "The Andy Warhol Foundation v. Goldsmith",
+                        "description": "Supreme Court ruled that Warhol’s 'Prince Series' is not fair use, emphasizing market substitution in fair use analysis.",
+                        "entities": "Entity: Warhol Foundation vs. Goldsmith → Transformative Use Limits",
+                        "imageUrl": "https://itsartlaw.org/wp-content/uploads/2018/12/andywarholsuitfeat.jpg"
+                    }
+                ]
+            }
+        ];
+
+        // Function to create an era section
+        function createEraSection(eraData, eraIndex) {
+            const eraDiv = document.createElement('div');
+            eraDiv.className = 'era';
+            eraDiv.id = `era-${eraIndex + 1}`;
+
+            const eraHeader = document.createElement('div');
+            eraHeader.className = 'era-header';
+            eraHeader.textContent = eraData.era;
+            eraDiv.appendChild(eraHeader);
+
+            eraData.events.forEach((event) => {
+                const eventDiv = document.createElement('div');
+                eventDiv.className = 'event';
+
+                // Event Title
+                const title = document.createElement('div');
+                title.className = 'event-title';
+                title.textContent = event.title;
+                eventDiv.appendChild(title);
+
+                // Event Date
+                const date = document.createElement('div');
+                date.className = 'event-date';
+                date.textContent = event.date;
+                eventDiv.appendChild(date);
+
+                // Image Container
+                const imageContainer = document.createElement('div');
+                imageContainer.className = 'event-image';
+                const img = document.createElement('img');
+                img.src = event.imageUrl;
+                img.alt = event.title;
+                imageContainer.appendChild(img);
+                eventDiv.appendChild(imageContainer);
+
+                // Event Description
+                const description = document.createElement('div');
+                description.className = 'event-description';
+                description.textContent = event.description;
+                eventDiv.appendChild(description);
+
+                // Event Entities
+                const entities = document.createElement('div');
+                entities.className = 'event-entities';
+                entities.textContent = event.entities;
+                eventDiv.appendChild(entities);
+
+                eraDiv.appendChild(eventDiv);
+            });
+
+            return eraDiv;
+        }
+
+        // Function to render the timeline
+        function renderTimeline() {
+            const timelineContainer = document.querySelector('.timeline-container');
+
+            data.forEach((era, index) => {
+                const eraSection = createEraSection(era, index);
+                timelineContainer.appendChild(eraSection);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTimeline();
+
+            // Intersection Observer for fade-in effects
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing after becoming visible
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            // Observe all era elements
+            document.querySelectorAll('.era').forEach(era => {
+                observer.observe(era);
+            });
+
+            // Toggle era content visibility
+            document.querySelectorAll('.era-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const events = header.parentElement.querySelectorAll('.event');
+                    events.forEach(event => {
+                        event.style.display = event.style.display === 'none' ? 'block' : 'none';
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

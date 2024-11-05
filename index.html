@@ -20,6 +20,29 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 10px;
+            position: relative;
+        }
+
+        /* Updated Styles for the Subtle Button */
+        .top-button {
+            position: absolute;
+            top: 10px;
+            right: 10px; /* Position in the top-right corner */
+            padding: 5px 12px;
+            background-color: transparent;
+            color: #2c1810;
+            border: 1px solid #d3c5b6;
+            border-radius: 3px;
+            font-size: 14px;
+            text-decoration: none;
+            font-family: "Courier New", monospace;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .top-button:hover {
+            background-color: #f0ede6; /* Subtle background on hover */
+            color: #8b7355; /* Slight color shift */
         }
 
         .header {
@@ -76,15 +99,29 @@
             cursor: pointer;
         }
 
+        /* Grid view for cards */
+        #cardContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         .note-card {
             background: #fff9f0;
             border: 1px solid #d3c5b6;
             border-radius: 2px;
             padding: 20px;
-            margin-bottom: 20px;
+            margin: 10px;
             box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
             position: relative;
             font-family: "Courier New", monospace;
+            width: 280px; /* Adjust as needed */
+            box-sizing: border-box;
+            cursor: move;
+        }
+
+        .note-card.dragging {
+            opacity: 0.5;
         }
 
         .card-number {
@@ -98,17 +135,17 @@
 
         .concept-title {
             color: #2c1810;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
-            margin: 10px 0 20px 0;
+            margin: 10px 0 10px 0;
             text-align: left;
             border-bottom: 2px solid #8b7355;
-            padding-bottom: 10px;
+            padding-bottom: 5px;
         }
 
         .quote-section {
-            margin: 20px 0;
-            padding: 15px;
+            margin: 10px 0;
+            padding: 10px;
             background: rgba(211,197,182,0.1);
             border-left: 3px solid #8b7355;
         }
@@ -116,8 +153,8 @@
         .quote-text {
             font-style: italic;
             color: #5c4033;
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 14px;
+            line-height: 1.4;
         }
 
         .quote-source {
@@ -132,8 +169,8 @@
         }
 
         .tags-section {
-            margin: 20px 0;
-            padding: 10px 0;
+            margin: 10px 0;
+            padding: 5px 0;
             border-bottom: 1px dashed #d3c5b6;
             display: flex;
             flex-wrap: wrap;
@@ -142,7 +179,7 @@
 
         .tag {
             background: #f0ede6;
-            padding: 3px 8px;
+            padding: 3px 6px;
             border: 1px solid #d3c5b6;
             border-radius: 2px;
             font-size: 12px;
@@ -155,10 +192,10 @@
         }
 
         .info-item {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 10px;
+            grid-template-columns: 80px 1fr;
+            gap: 5px;
             align-items: start;
         }
 
@@ -177,27 +214,27 @@
             font-weight: bold;
             color: #8b7355;
             text-align: right;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .info-content {
             color: #2c1810;
-            line-height: 1.6;
-            font-size: 14px;
+            line-height: 1.4;
+            font-size: 12px;
             border-left: 2px solid #d3c5b6;
             padding-left: 10px;
         }
 
         .card-footer {
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 20px;
+            padding-top: 10px;
             border-top: 2px solid #d3c5b6;
             font-size: 12px;
         }
 
         .card-title {
             color: #2c1810;
-            font-size: 14px;
+            font-size: 12px;
             margin-bottom: 5px;
         }
 
@@ -205,14 +242,6 @@
             color: #8b7355;
             font-size: 12px;
             font-style: italic;
-        }
-
-        .reference-links {
-            font-size: 12px;
-            color: #8b7355;
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 1px dashed #d3c5b6;
         }
 
         /* Category Colors */
@@ -223,16 +252,26 @@
         .category-5 { background-color: #ffd92f; } /* Yellowish */
 
         /* Adjust tag colors for visibility */
-        .category-tag-1 { background-color: #e0f7f1; }
-        .category-tag-2 { background-color: #e8ecfb; }
-        .category-tag-3 { background-color: #f0fae6; }
-        .category-tag-4 { background-color: #fdebf3; }
-        .category-tag-5 { background-color: #fff9e6; }
+        .category-tag-1 { background-color: #e0f7f1; color: #2c1810; }
+        .category-tag-2 { background-color: #e8ecfb; color: #2c1810; }
+        .category-tag-3 { background-color: #f0fae6; color: #2c1810; }
+        .category-tag-4 { background-color: #fdebf3; color: #2c1810; }
+        .category-tag-5 { background-color: #fff9e6; color: #2c1810; }
 
+        /* Highlighted category */
+        .category.selected {
+            border: 2px solid #000;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- New Button Container -->
+        <div class="button-container">
+            <a href="time.html" class="top-button">Go to Time</a>
+        </div>
+        <!-- End of Button Container -->
+
         <div class="header">
             <h1>Digital Zettelkasten: AI Legal Cases</h1>
         </div>
@@ -1091,13 +1130,18 @@ const clayColors = [
             // Highlight selected category and reset others
             const categoryElements = document.getElementsByClassName('category');
             Array.from(categoryElements).forEach((elem, idx) => {
-                elem.style.border = idx === categoryIndex ? '2px solid #000' : 'none';
+                if (idx === categoryIndex) {
+                    elem.classList.add('selected');
+                } else {
+                    elem.classList.remove('selected');
+                }
             });
         }
 
         function createCard(cardData, index, platformIndex) {
             const card = document.createElement('div');
             card.className = 'note-card';
+            card.setAttribute('draggable', 'true');
 
             // Assign background color based on source
             card.style.backgroundColor = sourceColors[cardData.title];
@@ -1167,6 +1211,12 @@ const clayColors = [
             // Add data-tags attribute for filtering
             card.setAttribute('data-tags', tagsArray.join(','));
 
+            // Add drag event listeners
+            card.addEventListener('dragstart', handleDragStart);
+            card.addEventListener('dragover', handleDragOver);
+            card.addEventListener('drop', handleDrop);
+            card.addEventListener('dragend', handleDragEnd);
+
             return card;
         }
 
@@ -1215,6 +1265,47 @@ const clayColors = [
                     card.style.display = 'none';
                 }
             });
+        }
+
+        // Drag and Drop Functions
+        let dragSrcEl = null;
+
+        function handleDragStart(e) {
+            this.classList.add('dragging');
+            dragSrcEl = this;
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/html', this.outerHTML);
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            return false;
+        }
+
+        function handleDrop(e) {
+            e.stopPropagation();
+
+            if (dragSrcEl !== this) {
+                const container = document.getElementById('cardContainer');
+                const temp = document.createElement('div');
+                temp.innerHTML = e.dataTransfer.getData('text/html');
+                const droppedCard = temp.firstChild;
+
+                container.insertBefore(droppedCard, this);
+                container.removeChild(dragSrcEl);
+
+                // Re-add event listeners to the new card
+                droppedCard.addEventListener('dragstart', handleDragStart);
+                droppedCard.addEventListener('dragover', handleDragOver);
+                droppedCard.addEventListener('drop', handleDrop);
+                droppedCard.addEventListener('dragend', handleDragEnd);
+            }
+            return false;
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
         }
 
         // Initialize by displaying categories and cards
